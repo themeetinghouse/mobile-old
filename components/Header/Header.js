@@ -19,7 +19,7 @@ export default class HomeScreen extends Component {
 
     return (
        
-        <Header style={{backgroundColor: "#f0493e"}}>
+        <Header style={{backgroundColor: "#000000"}}>
         <Left>
           <Button
             transparent
