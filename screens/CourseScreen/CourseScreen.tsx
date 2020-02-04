@@ -3,8 +3,11 @@ import { StyleProvider,Card, Container, Content, Text, Button } from 'native-bas
 import Header from '../../components/Header/Header'
 import MyMap from '../../components/MyMap/MyMap';
 import MyConversations from '../../components/MyConversations/MyConversations';
+import MyEvents from '../../components/MyEvents/MyEvents';
 import MyGroups from '../../components/MyGroups/MyGroups';
+import MyResources from '../../components/MyResources/MyResources';
 import MyPeople from '../../components/MyPeople/MyPeople';
+import MyOrganizations from '../../components/MyOrganizations/MyOrganizations';
 import styles from '../../components/style.js'
 import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
@@ -17,27 +20,19 @@ interface Props {
 }
 interface State {
   showMap: boolean
-  loadId: string
-  data: any
-
 }
 
 
 export default class CourseScreen extends React.Component<Props, State>{
   constructor(props: Props) {
     super(props);
-    const data = require('../../assets/json/groups.json');
-
     this.state = {
-      showMap: false,
-      loadId: props.navigation.state.params.id,
-      data: data.filter(item => item.id == props.navigation.state.params.id)[0]
+      showMap: false
     }
   }
   mapChanged = () => {
     this.setState({ showMap: !this.state.showMap })
   }
-  /*
   item = {
     "type": "course",
     "name": "Leadership Formation",
@@ -107,7 +102,7 @@ export default class CourseScreen extends React.Component<Props, State>{
         ]
       }
     ]
-  }*/
+  }
   render() {
     console.log("EventScreen")
     return (
@@ -117,21 +112,21 @@ export default class CourseScreen extends React.Component<Props, State>{
         <Header title="Jesus Collective" navigation={this.props.navigation} onMapChange={this.mapChanged} />
         <MyMap visible={this.state.showMap}></MyMap>
         <Content style={{ backgroundColor:"#F0493E", flex: 20 }}>
-          <Text style={styles.fontCourseHeaderTime}>{this.state.data.time} - {this.state.data.length}</Text>
-          <Text style={styles.fontCourseHeaderBold}>{this.state.data.name}</Text>
+          <Text style={styles.fontCourseHeaderTime}>{this.item.time} - {this.item.length}</Text>
+          <Text style={styles.fontCourseHeaderBold}>{this.item.name}</Text>
           <Text style={styles.fontCourseHeader}>Course</Text>
-          <Text style={styles.fontCourseHeaderDescription}>{this.state.data.description}</Text>
+          <Text style={styles.fontCourseHeaderDescription}>{this.item.description}</Text>
         </Content>
         <Content style={{ flex: 80 }}>
           <Container style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start' }}>
             <Container style={{ flex: 15, flexDirection: "column", justifyContent: 'flex-start' }}>
 
               <Image style={{ margin: 0, padding: 0, width: 40, height: 45 }} source={require("../../assets/profile-placeholder.png")} />
-              <Text>{this.state.data.organizer.name}</Text>
+              <Text>{this.item.organizer.name}</Text>
               <Text>Publisher</Text>
               <Button bordered style={styles.sliderButton}><Text>Contact Us</Text></Button>
 
-              {this.state.data.instructors.map((item: any) => {
+              {this.item.instructors.map((item: any) => {
                 return (<Card><Image style={{ margin: 0, padding: 0, width: 40, height: 45 }} source={require("../../assets/profile-placeholder.png")} />
                   <Text>{item.name}</Text>
                   <Text>Instructor</Text>
@@ -141,9 +136,9 @@ export default class CourseScreen extends React.Component<Props, State>{
               )}
             </Container>
             <Container style={{ flex: 70, flexDirection: "column", alignContent: 'flex-start', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
-              <Text>{this.state.data.summary}</Text>
+              <Text>{this.item.summary}</Text>
               <Text>Course Details</Text>
-              {this.state.data.course.map((item) => {
+              {this.item.course.map((item) => {
                 return (
                   <Container>
                     <Text>Week {item.week}</Text>
@@ -160,10 +155,10 @@ export default class CourseScreen extends React.Component<Props, State>{
             </Container>
             <Container style={{ flex: 15, flexDirection: "column", alignContent: 'flex-start', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
               <Button bordered style={styles.sliderButton}><Text>Join Now</Text></Button>
-               <Text>{this.state.data.time}</Text>
-               <Text>{this.state.data.length}</Text>
-               <Text>{this.state.data.effort}</Text>
-               <Text>{this.state.data.cost}</Text>
+               <Text>{this.item.time}</Text>
+               <Text>{this.item.length}</Text>
+               <Text>{this.item.effort}</Text>
+               <Text>{this.item.cost}</Text>
             </Container>
           </Container>
         </Content>

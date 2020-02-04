@@ -4,8 +4,12 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import MyMap from '../../components/MyMap/MyMap';
 import MyConversations from '../../components/MyConversations/MyConversations';
+import MyEvents from '../../components/MyEvents/MyEvents';
 import MyGroups from '../../components/MyGroups/MyGroups';
+import MyResources from '../../components/MyResources/MyResources';
+import MyCourses from '../../components/MyCourses/MyCourses'
 import MyPeople from '../../components/MyPeople/MyPeople';
+import MyOrganizations from '../../components/MyOrganizations/MyOrganizations';
 import { NavigationScreenProp } from 'react-navigation';
 interface Props {
   navigation: NavigationScreenProp<any, any>
@@ -36,11 +40,11 @@ export default class HomeScreen extends React.Component<Props, State>{
           <Content style={{ display: "flex", flexDirection: "column", width: "100%" }}>
             <Container style={{ display: "flex", flexDirection: "row" }}>
               <Container style={{ flex: 70, flexDirection: "column" }}>
-                <MyGroups type="event" wrap={false} navigation={this.props.navigation}></MyGroups>
-                <MyGroups type="group" wrap={false} navigation={this.props.navigation}></MyGroups>
-                <MyGroups type="resource" wrap={false} navigation={this.props.navigation}></MyGroups>
-                <MyGroups type="organization" wrap={false} navigation={this.props.navigation}></MyGroups>
-                <MyGroups type="course" wrap={false} navigation={this.props.navigation}></MyGroups>
+                <MyEvents wrap={false} navigation={this.props.navigation}></MyEvents>
+                <MyGroups wrap={false} navigation={this.props.navigation}></MyGroups>
+                <MyResources wrap={false} navigation={this.props.navigation}></MyResources>
+                <MyOrganizations wrap={false} navigation={this.props.navigation}></MyOrganizations>
+                <MyCourses wrap={false} navigation={this.props.navigation}></MyCourses>
               </Container>
               <Container style={{ flex: 30, flexDirection: "column" }}>
                 <MyPeople wrap={false} navigation={this.props.navigation}></MyPeople>

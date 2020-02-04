@@ -5,9 +5,7 @@ import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
 import { Image } from 'react-native'
 
-interface Props { 
-  groupId:string
-}
+interface Props { }
 interface State { }
 export default class MessageBoard extends React.Component<Props, State> {
   constructor(props: Props) {
