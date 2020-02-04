@@ -1,61 +1,9 @@
 import * as React from 'react';
 import { NavigationScreenProp } from 'react-navigation';
 import { Container, Content, Text, List, ListItem, Header } from "native-base";
-const routes = [
-  {
-    name:"Home",
-    route:"HomeScreen"
-  },
-  {
-    name:"Explore",
-    route:"ExploreScreen"
-  },
-  {
-    name:"Support",
-    route:"SupportScreen"
-  },
-  {
-    name:"Get Involved",
-    route:"GetInvolvedScreen"
-  },
-  {
-    name:"Contact",
-    route:"ContactScreen"
-  },
-  {
-    name:"Kids and Youth",
-    route:"KidsAndYouthScreen"
-  },
 
-  {
-    name:"Events",
-    route:"NewsScreen"
-  },
-  {
-    name:"Groups",
-    route:"NewsScreen"
-  },
-  {
-    name:"Training",
-    route:"NewsScreen"
-  },
-  {
-    name:"Resources",
-    route:"NewsScreen"
-  },
-  
-  {
-    name:"Profile",
-    route:"ProfileScreen"
-  }
-];
-interface Props{
-  navigation: NavigationScreenProp<any, any>
-}
-interface State{
-
-}
-export default class SideBar extends React.Component<Props,State> {
+const routes = ["HomeScreen", "NewsScreen", "ProfileScreen"];
+export default class SideBar extends React.Component {
   render() {
     return (
       <Container><Content>
@@ -66,8 +14,8 @@ export default class SideBar extends React.Component<Props,State> {
               return (
                 <ListItem
                   button
-                  onPress={() => this.props.navigation.navigate(data.route)}>
-                  <Text>{data.name}</Text>
+                  onPress={() => this.props.navigation.navigate(data)}>
+                  <Text>{data}</Text>
                 </ListItem>
               );
             }}

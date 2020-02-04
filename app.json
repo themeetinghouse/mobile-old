@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Jesus Collective",
-    "slug": "JesusCollective",
+    "name": "The Meeting House",
+    "slug": "TheMeetingHouse",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -9,15 +9,13 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "6.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "facebookScheme": "fb579712102531269",
-    "facebookAppId": "579712102531269",
-    "facebookDisplayName": "Jesus Collective",
-    "loading": {
-      "icon": "./assets/icon.png"
-    },
+
+    "facebookScheme":"fb579712102531269",
+    "facebookAppId":"579712102531269",
+    "facebookDisplayName":"The Meeting House",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -31,19 +29,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.jesuscollective.iosapp",
-      "buildNumber": "8"
+
+      "bundleIdentifier": "com.fluidesign.mobileroadie.13460",
+      "buildNumber": "3"
     },
     "android": {
-      "versionCode": 8,
-      "package": "com.jesuscollective.androidapp"
-    },
-    "web": {
-      "babel": {
-        "include": [
-          "aws-amplify-react-native"
-        ]
-      }
+      "package": "com.themeetinghouse.androidapp"
     }
   }
 }
