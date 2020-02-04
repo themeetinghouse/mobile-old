@@ -6,7 +6,6 @@ import material from '../../native-base-theme/variables/material';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Image } from 'react-native'
 import { DrawerActions, NavigationScreenProp } from 'react-navigation';
-import { Auth } from 'aws-amplify';
 
 
 interface Props {
@@ -22,7 +21,6 @@ interface State {
   createString: String
   titleString: String
   data: any
-  showCreateButton: Boolean
 }
 
 export default class MyGroups extends React.Component<Props, State> {
@@ -37,8 +35,7 @@ export default class MyGroups extends React.Component<Props, State> {
         titleString: "Events",
         type: props.type,
         cardWidth: 250,
-        data: data.filter(item => item.type == props.type),
-        showCreateButton: false
+        data: data.filter(item => item.type == props.type)
       }
     }
     else if (props.type == "group") {
@@ -50,8 +47,7 @@ export default class MyGroups extends React.Component<Props, State> {
         titleString: "Groups",
         type: props.type,
         cardWidth: 250,
-        data: data.filter(item => item.type == props.type),
-        showCreateButton: false
+        data: data.filter(item => item.type == props.type)
       }
     }
     else if (props.type == "resource") {
@@ -63,8 +59,7 @@ export default class MyGroups extends React.Component<Props, State> {
         titleString: "Resources",
         type: props.type,
         cardWidth: 250,
-        data: data.filter(item => item.type == props.type),
-        showCreateButton: false
+        data: data.filter(item => item.type == props.type)
       }
 
     }
@@ -77,8 +72,7 @@ export default class MyGroups extends React.Component<Props, State> {
         titleString: "Organizations",
         type: props.type,
         cardWidth: 200,
-        data: data.filter(item => item.type == props.type),
-        showCreateButton: false
+        data: data.filter(item => item.type == props.type)
       }
 
     }
@@ -91,8 +85,7 @@ export default class MyGroups extends React.Component<Props, State> {
         titleString: "Courses",
         type: props.type,
         cardWidth: 200,
-        data: data.filter(item => item.type == props.type),
-        showCreateButton: false
+        data: data.filter(item => item.type == props.type)
       }
 
     }
@@ -106,24 +99,14 @@ export default class MyGroups extends React.Component<Props, State> {
         titleString: "",
         createString: "",
         cardWidth: 300,
-        data: data.filter(item => item.type == props.type),
-        showCreateButton: false
+        data: data.filter(item => item.type == props.type)
       }
     }
-    var user = Auth.currentAuthenticatedUser();
-    user.then((user: any) => {
-      this.setState({ showCreateButton: user.signInUserSession.accessToken.payload["cognito:groups"].includes("verifiedUsers") })
-    })
-
   }
-  openSingle(id: any) {
+  openSingle(id:any) {
     console.log({ "Navigate to": this.state.openSingle })
     console.log(id)
-    this.props.navigation.navigate(this.state.openSingle, { id: id, create:false })
-  }
-  createSingle(){
-    console.log({ "Navigate to": this.state.openSingle })
-    this.props.navigation.navigate(this.state.openSingle, { create:true })
+    this.props.navigation.navigate(this.state.openSingle,{id:id})
   }
   openMultiple() {
     console.log({ "Navigate to": this.state.openMultiple })
@@ -131,15 +114,14 @@ export default class MyGroups extends React.Component<Props, State> {
   }
 
   renderGroup(item: any) {
-    return <Card style={{ alignSelf: "flex-start", padding: "0px", width: this.state.cardWidth }
-    } >
+    return <Card style={{ alignSelf: "flex-start", padding: "0px", width: this.state.cardWidth }}>
       <CardItem bordered style={{ paddingLeft: 0, paddingRight: 0, paddingTop: 0, paddingBottom: 0 }} >
         <Image style={{ margin: 0, padding: 0, width: this.state.cardWidth, height: 20 }} source={require('../../assets/svg/pattern.svg')}></Image>
       </CardItem>
       <CardItem ><Text style={styles.fontTitle}>{item.name}</Text></CardItem>
       <CardItem ><Text style={styles.fontDetail}>{item.description}</Text></CardItem>
       <CardItem ><Button><Text style={styles.font}>Join</Text></Button><Right></Right></CardItem>
-    </Card >
+    </Card>
   }
   renderEvent(item: any) {
     return <Card style={{ alignSelf: "flex-start", padding: "0px", width: this.state.cardWidth }}>
@@ -194,16 +176,13 @@ export default class MyGroups extends React.Component<Props, State> {
               <Container style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: "flex-start" }}>
                 <Button transparent onPress={() => { this.openMultiple() }}><Text style={styles.fontSliderButtons}>Show All</Text></Button>
                 <Button transparent onPress={() => { this.openMultiple() }}><Text style={styles.fontSliderButtons}>Show Recommended</Text></Button>
-                {this.state.showCreateButton ?
-                  <Button bordered onPress={() => { this.createSingle() }} style={styles.sliderButton}><Text style={styles.fontSliderButtons}>{this.state.createString}</Text></Button>
-                  : null
-                }
+                <Button bordered style={styles.sliderButton}><Text style={styles.fontSliderButtons}>{this.state.createString}</Text></Button>
               </Container>
             </Container>
             <Container style={{ overflow: "scroll", minHeight: 330, flexWrap: this.props.wrap ? "wrap" : "nowrap", flexGrow: 1, width: "100%", flexDirection: 'row', justifyContent: "flex-start", alignItems: "flex-start" }}>
               {this.state.data.map((item) => {
                 return (
-                  <ListItem key={item.id} style={{ alignSelf: "flex-start" }} button onPress={() => { this.openSingle(item.id) }}>
+                  <ListItem style={{ alignSelf: "flex-start" }} button onPress={() => { this.openSingle(item.id) }}>
                     {this.state.type == "group" ?
                       this.renderGroup(item) :
                       this.state.type == "event" ?
