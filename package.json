@@ -25,7 +25,6 @@
     "react-native-maps": "~0.25.0",
     "react-native-reanimated": "~1.2.0",
     "react-native-scripts": "^2.0.1",
-
     "react-navigation": "^3.3.2"
   },
   "devDependencies": {
