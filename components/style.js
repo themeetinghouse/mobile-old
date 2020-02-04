@@ -7,7 +7,7 @@ export default EStyleSheet.create({
     {
         fontFamily: 'Graphik-Regular-App',
         fontSize: 16
-    },
+   },
     fontBold:
     {
         fontFamily: 'Graphik-Regular-App',
