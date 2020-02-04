@@ -1,5 +1,5 @@
-import { Button, Text, View, Input, Form, Item, Label, Content } from 'native-base';
-import { Image } from 'react-native'
+import { Text, View, Input, Form, Item, Label,Content } from 'native-base';
+import { Button, Image } from 'react-native'
 import * as React from 'react';
 import * as queries from '../../src/graphql/queries';
 import * as mutations from '../../src/graphql/mutations';
@@ -61,71 +61,66 @@ export default class MyProfile extends React.Component<Props, State> {
     return (
       (this.state.UserDetails != null ?
         <Content>
-          <View style={{ justifyContent: "space-between", flexDirection: "row", width: "100%" }}>
+          <View style={{justifyContent: "space-between",flexDirection: "row", width:"100%" }}>
             <Text style={styles.fontTitle}>Create your profile</Text>
             <Button color="#F0493E" title="Save and Publish Your Profile" onPress={() => this.finalizeProfile()} />
           </View>
 
-          <Form style={{ display: "flex", flexDirection: "row" }}>
-            <View style={{ width: "35%" }}>
-              <View>
-                <Image style={{ width: "250px", height: "290px" }} source={require('../../assets/profile-placeholder.png')}></Image>
-                <Button style={styles.fontFormProfileImageButton}>
-                  <Text uppercase={false} style={styles.fontFormProfileImageButtonText}>Upload Profile Picture</Text>
-                </Button>
-                <Text style={styles.fontFormProfileImageText}>Upload a picture of minimum 500px wide. Maximum size is 700kb.</Text>
-              </View>
-              <Text style={styles.fontFormName}>Vanessa Smith</Text>
-              <Text style={styles.fontFormRole}>My Current Role not defined</Text>
-              <Text style={styles.fontFormUserType}>Partner</Text>
-
-              <Text style={styles.fontFormText}><Text style={styles.fontFormMandatory}>*</Text>One Sentence about me</Text>
-              <Input style={styles.fontFormAboutMe} value={this.state.UserDetails.aboutMeShort}
+          <Form style={{display:"flex", flexDirection: "row"}}>
+            <View style={{width:"35%"}}>
+              <Image style={{ width: "150px", height:"130px"}} source={require('../../assets/profile-placeholder.png')}></Image>
+              <Button color="#F0493E" title="Upload Profile Picture"></Button>
+              <Text style={styles.font}>Upload a picture of minimum 500px wide. Maximum size is 700kb.</Text>
+              <Text style={styles.fontBold}>Vanessa Smith</Text>
+              <Text style={styles.font}>My Current Role not defined</Text>
+              <Text style={styles.fontBold}>Partner</Text>
+              <Text style={styles.font}>One Sentence about me</Text>
+              <Input value={this.state.UserDetails.aboutMeShort}
                 onChange={(e) => { this.handleInputChange(e, "aboutMeShort") }} placeholder="Short sentence about me" />
-              <Text style={styles.fontFormSmallDarkGrey}><Image style={{ width: "22px", height: "22px" }} source={require('../../assets/svg/pin 2.svg')}></Image>Location not defined</Text>
-              <Text style={styles.fontFormSmallGrey}><Image style={{ width: "22px", height: "22px" }} source={require('../../assets/svg/calendar.svg')}></Image>Joined not defined</Text>
-              <Text style={styles.fontFormSmallGrey}><Image style={{ width: "22px", height: "22px" }} source={require('../../assets/svg/church.svg')}></Image>Organization Name not defined</Text>
-              <Text style={styles.fontFormSmallHeader}>Private Information</Text>
-              <View style={{ backgroundColor: '#F3F5F9' }}>
-                <Item stackedLabel>
-                  <Label style={styles.fontFormSmall}><Text style={styles.fontFormMandatory}>*</Text>Address</Label>
-                  <Input style={styles.fontFormSmallInput} value={this.state.UserDetails.address}
-                    onChange={(e) => { this.handleInputChange(e, "address") }} />
-                </Item>
-                <Item stackedLabel>
-                  <Label style={styles.fontFormSmall}><Text style={styles.fontFormMandatory}>*</Text>City</Label>
-                  <Input style={styles.fontFormSmallInput} value={this.state.UserDetails.city}
-                    onChange={(e) => { this.handleInputChange(e, "city") }} />
-                </Item>
-                <Item stackedLabel>
-                  <Label style={styles.fontFormSmall}><Text style={styles.fontFormMandatory}>*</Text>Province/State</Label>
-                  <Input style={styles.fontFormSmallInput} value={this.state.UserDetails.province}
-                    onChange={(e) => { this.handleInputChange(e, "province") }} />
-                </Item>
-                <Item stackedLabel>
-                  <Label style={styles.fontFormSmall}><Text style={styles.fontFormMandatory}>*</Text>Postal/Zip Code</Label>
-                  <Input style={styles.fontFormSmallInput} value={this.state.UserDetails.postalCode}
-                    onChange={(e) => { this.handleInputChange(e, "postalCode") }} />
-                </Item>
-                <Item stackedLabel>
-                  <Label style={styles.fontFormSmall}><Text style={styles.fontFormMandatory}>*</Text>Country</Label>
-                  <Input style={styles.fontFormSmallInput} value={this.state.UserDetails.country}
-                    onChange={(e) => { this.handleInputChange(e, "country") }} />
-                </Item>
-                <Item stackedLabel>
-                  <Label style={styles.fontFormSmall}><Text style={styles.fontFormMandatory}>*</Text>Email Address</Label>
-                  <Input style={styles.fontFormSmallInput} value={this.state.UserDetails.email}
-                    onChange={(e) => { this.handleInputChange(e, "email") }} />
-                </Item>
-                <Item stackedLabel>
-                  <Label style={styles.fontFormSmall}><Text style={styles.fontFormMandatory}>*</Text>Phone #</Label>
-                  <Input style={styles.fontFormSmallInput} value={this.state.UserDetails.phone}
-                    onChange={(e) => { this.handleInputChange(e, "phone") }} />
-                </Item>
-              </View>
+
+              <Text style={styles.font}>Location not defined</Text>
+              <Text style={styles.font}>Joined not defined</Text>
+              <Text style={styles.font}>Organization Name not defined</Text>
+              <Text style={styles.font}>Private Information</Text>
+              <Item floatingLabel>
+                <Label style={styles.font}>Address</Label>
+                <Input value={this.state.UserDetails.address}
+                  onChange={(e) => { this.handleInputChange(e, "address") }} />
+              </Item>
+              <Item floatingLabel>
+                <Label style={styles.font}>City</Label>
+                <Input value={this.state.UserDetails.city}
+                  onChange={(e) => { this.handleInputChange(e, "city") }} />
+              </Item>
+              <Item floatingLabel>
+                <Label style={styles.font}>Province/State</Label>
+                <Input value={this.state.UserDetails.province}
+                  onChange={(e) => { this.handleInputChange(e, "province") }} />
+              </Item>
+              <Item floatingLabel>
+                <Label style={styles.font}>Postal/Zip Code</Label>
+                <Input value={this.state.UserDetails.postalCode}
+                  onChange={(e) => { this.handleInputChange(e, "postalCode") }} />
+              </Item>
+              <Item floatingLabel>
+                <Label style={styles.font}>Country</Label>
+                <Input value={this.state.UserDetails.country}
+                  onChange={(e) => { this.handleInputChange(e, "country") }} />
+              </Item>
+              <Item floatingLabel>
+                <Label style={styles.font}>Email Address</Label>
+                <Input value={this.state.UserDetails.email}
+                  onChange={(e) => { this.handleInputChange(e, "email") }} />
+              </Item>
+              <Item floatingLabel>
+                <Label style={styles.font}>Phone #</Label>
+                <Input value={this.state.UserDetails.phone}
+                  onChange={(e) => { this.handleInputChange(e, "phone") }} />
+              </Item>
+
 
             </View>
-            <View style={{ marginLeft: 10, width: "65%" }}>
+            <View style={{marginLeft:10,width:"65%"}}>
               <Text style={styles.font}>Tell us more about you</Text>
               <Text style={styles.fontBold}>About me</Text>
               <Input value={this.state.UserDetails.aboutMeLong}
