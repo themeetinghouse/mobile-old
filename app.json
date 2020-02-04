@@ -6,8 +6,7 @@
     "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "6.0.0",
     "orientation": "portrait",
@@ -30,11 +29,13 @@
     "ios": {
       "supportsTablet": true,
 
+
       "bundleIdentifier": "com.fluidesign.mobileroadie.13460",
       "buildNumber": "3"
     },
     "android": {
       "package": "com.themeetinghouse.androidapp"
+
     }
   }
 }

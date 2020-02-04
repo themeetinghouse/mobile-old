@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
 import HomeScreen from "../HomeScreen/HomeScreen.js";
+import ExploreScreen from "../ExploreScreen/ExploreScreen.js";
+import SupportScreen from "../SupportScreen/SupportScreen.js";
+import KidsAndYouthScreen from "../KidsAndYouthScreen/KidsAndYouthScreen.js";
+
+import GetInvolvedScreen from "../GetInvolvedScreen/GetInvolvedScreen.js";
+import ContactScreen from "../ContactScreen/ContactScreen.js";
 import NewsScreen from "../NewsScreen/NewsScreen.js";
 import ProfileScreen from "../ProfileScreen/ProfileScreen.js";
 import LoginScreen from "../LoginScreen/LoginScreen.js";
