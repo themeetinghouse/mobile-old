@@ -49,16 +49,7 @@ const routes = [
   {
     name: "Profile",
     route: "ProfileScreen"
-  },
-  {
-    name:"Group",
-    route:"GroupScreen"
-  },
-  {
-    name:"Event",
-    route:"EventScreen"
   }
-
 ];
 interface Props {
   navigation: NavigationScreenProp<any, any>

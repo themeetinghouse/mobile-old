@@ -1,28 +1,26 @@
 ﻿import React from 'react';
-import { Container,Content, Text } from 'native-base';
+import {  Container, Content} from 'native-base';
 import Header from '../../components/Header/Header'
 import MyMap from '../../components/MyMap/MyMap';
 import MyConversations from '../../components/MyConversations/MyConversations';
 import MyEvents from '../../components/MyEvents/MyEvents';
 import MyGroups from '../../components/MyGroups/MyGroups';
 import MyResources from '../../components/MyResources/MyResources';
-import MyCourses from '../../components/MyCourses/MyCourses'
 import MyPeople from '../../components/MyPeople/MyPeople';
 import MyOrganizations from '../../components/MyOrganizations/MyOrganizations';
 import { NavigationScreenProp } from 'react-navigation';
-interface Props {
+
+interface Props{
   navigation: NavigationScreenProp<any, any>
 }
-interface State {
-  showMap: boolean
+interface State{
+showMap:boolean
 }
-
-
-export default class HomeScreen extends React.Component<Props, State>{
-  constructor(props: Props) {
+export default class CoursesScreen extends React.Component<Props,State> {
+  constructor(props:Props) {
     super(props);
     this.state = {
-      showMap: false
+      showMap: true
     }
   }
   mapChanged = () => {
@@ -30,7 +28,6 @@ export default class HomeScreen extends React.Component<Props, State>{
   }
 
   render() {
-    console.log("Homepage")
     return (
 
       <Container >
@@ -39,12 +36,15 @@ export default class HomeScreen extends React.Component<Props, State>{
         <Content>
           <Container style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start' }}>
             <Container style={{ flex: 70, flexDirection: "column", justifyContent: 'flex-start' }}>
-              <MyCourses wrap={true} navigation={this.props.navigation}></MyCourses>
+              <MyEvents ></MyEvents>
+              <MyGroups ></MyGroups>
+              <MyResources></MyResources>
+              <MyOrganizations></MyOrganizations>
             </Container>
-            <Container style={{ flex: 30, flexDirection: "column", alignContent: 'flex-start', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
-              <MyPeople wrap={false} navigation={this.props.navigation}></MyPeople>
-              <MyConversations navigation={this.props.navigation}> </MyConversations>
-              <Container ></Container>
+            <Container style={{ flex: 30, flexDirection: "column",  alignContent: 'flex-start', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+              <MyPeople></MyPeople>
+              <MyConversations> </MyConversations>
+              <Container style={{ flex: 1, flexGrow: 3 }}></Container>
             </Container>
           </Container>
         </Content>

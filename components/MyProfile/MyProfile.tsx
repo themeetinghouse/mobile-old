@@ -8,14 +8,10 @@ import { Auth } from 'aws-amplify';
 import styles from '../../components/style.js'
 import TagInput from 'react-native-tags-input';
 import { Dimensions } from 'react-native'
-import { NavigationScreenProp } from 'react-navigation';
-
-const mainColor = '#ffffff';
+const mainColor = '#3ca897';
 
 interface Props {
   finalizeProfile(): void
-  navigation: NavigationScreenProp<any, any>
-
 }
 interface State {
   UserDetails: any
@@ -148,7 +144,7 @@ export default class MyProfile extends React.Component<Props, State> {
             <View style={{ marginLeft: 10, width: "65%" }}>
               <Text style={styles.font}>Tell us more about you</Text>
               <Text style={styles.fontBold}>About me</Text>
-              <Input style={{borderWidth:1, borderColor:"#dddddd"}} value={this.state.UserDetails.aboutMeLong}
+              <Input value={this.state.UserDetails.aboutMeLong}
                 onChange={(e) => { this.handleInputChange(e, "aboutMeLong") }} multiline={true} placeholder="type here" />
               <Text style={styles.fontBold}>My Interests</Text>
               <Text style={styles.font}>You can select 7 key interests</Text>
@@ -156,15 +152,15 @@ export default class MyProfile extends React.Component<Props, State> {
                 updateState={this.updateTagState}
                 tags={this.state.tags}
                 placeholder="Tags..."
-                label='Press space to add a tag'
-                labelStyle={{ color: '#000000' }}
+                label='Press comma & space to add a tag'
+                labelStyle={{ color: '#fff' }}
                 //leftElement={<Icon name={'tag-multiple'} type={'material-community'} color={this.state.tagsText} />}
-                leftElementContainerStyle={{ marginLeft: 0 }}
+                leftElementContainerStyle={{ marginLeft: 3 }}
                 containerStyle={{ width: (Dimensions.get('window').width - 40) }}
-                inputContainerStyle={[styles.textInput, {  backgroundColor: this.state.tagsColor }]}
-                inputStyle={{ borderWidth:1, borderColor:"#dddddd", color: this.state.tagsText }}
-                onFocus={() => this.setState({ tagsColor: '#fff', tagsText: "#000000" })}
-                onBlur={() => this.setState({ tagsColor: mainColor, tagsText: '#000000' })}
+                inputContainerStyle={[styles.textInput, { backgroundColor: this.state.tagsColor }]}
+                inputStyle={{ color: this.state.tagsText }}
+                onFocus={() => this.setState({ tagsColor: '#fff', tagsText: mainColor })}
+                onBlur={() => this.setState({ tagsColor: mainColor, tagsText: '#fff' })}
                 autoCorrect={false}
                 tagStyle={styles.tag}
                 tagTextStyle={styles.tagText}
@@ -176,10 +172,10 @@ export default class MyProfile extends React.Component<Props, State> {
                   onChange={(e) => { this.handleInputChange(e, "currentRole") }} />
               </Item>
               <Text style={styles.font}>Describe your current Scope</Text>
-              <Input style={{borderWidth:1, borderColor:"#dddddd"}} placeholder="Type here." value={this.state.UserDetails.currentScope}
+              <Input placeholder="Type here." value={this.state.UserDetails.currentScope}
                 onChange={(e) => { this.handleInputChange(e, "currentScope") }} multiline={true} />
               <Text style={styles.font}>Identify your personality type indicator</Text>
-              <Input style={{borderWidth:1, borderColor:"#dddddd"}}  placeholder="Type here. like (MBTI, DISC, APEST, Birkman, Enneagram + Wing, Kolbe Index, other, N/A" value={this.state.UserDetails.personality}
+              <Input placeholder="Type here. like (MBTI, DISC, APEST, Birkman, Enneagram + Wing, Kolbe Index, other, N/A" value={this.state.UserDetails.personality}
                 onChange={(e) => { this.handleInputChange(e, "personality") }} multiline={true} />
 
 
@@ -200,7 +196,7 @@ export default class MyProfile extends React.Component<Props, State> {
                   onChange={(e) => { this.handleInputChange(e, "orgSize") }} />
               </Item>
               <Text style={styles.font}>Description of church or ministry organization</Text>
-              <Input style={{borderWidth:1, borderColor:"#dddddd"}}  placeholder="Type here." value={this.state.UserDetails.orgDescription}
+              <Input placeholder="Type here." value={this.state.UserDetails.orgDescription}
                 onChange={(e) => { this.handleInputChange(e, "orgDescription") }} multiline={true} />
             </View>
           </Form>
