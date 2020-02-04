@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Container, Content, Text, List, ListItem, Header } from "native-base";
+import {  NavigationScreenProp } from 'react-navigation';
 
 
 const routes = [
@@ -60,7 +61,7 @@ const routes = [
 
 ];
 interface Props {
-  navigation: any
+  navigation: NavigationScreenProp<any, any>
 }
 interface State {
 

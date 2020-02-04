@@ -2,16 +2,20 @@
 import { StyleProvider, Card, Container, Content, Text, Button } from 'native-base';
 import Header from '../../components/Header/Header'
 import MyMap from '../../components/MyMap/MyMap';
+import MyConversations from '../../components/MyConversations/MyConversations';
+import MyGroups from '../../components/MyGroups/MyGroups';
+import MyPeople from '../../components/MyPeople/MyPeople';
 import styles from '../../components/style.js'
 import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
-
+import MessageBoard from '../../components/MessageBoard/MessageBoard'
+import { NavigationScreenProp } from 'react-navigation';
 import { Image } from 'react-native'
 import { API } from 'aws-amplify';
 import { CreateGroupInput } from '../../src/API'
 
 interface Props {
-  navigation: any
+  navigation: NavigationScreenProp<any, any>
 }
 interface State {
   showMap: boolean
@@ -46,9 +50,9 @@ export default class CourseScreen extends React.Component<Props, State>{
       description: "",
       memberCount: 1,
       image: "",
-      organizerUser: { name: "" },
-      instructors: [],
-      course: []
+      organizerUser:{name:""},
+      instructors:[],
+      course:[]
     }
     const data = require('../../assets/json/groups.json');
     if (props.navigation.state.params.create)
@@ -68,7 +72,7 @@ export default class CourseScreen extends React.Component<Props, State>{
 
         <Container >
           <Header title="Jesus Collective" navigation={this.props.navigation} onMapChange={this.mapChanged} />
-          <MyMap navigation={this.props.navigation} visible={this.state.showMap}></MyMap>
+          <MyMap visible={this.state.showMap}></MyMap>
           <Content style={{ backgroundColor: "#F0493E", flex: 20 }}>
             <Text style={styles.fontCourseHeaderTime}>{this.state.data.time} - {this.state.data.length}</Text>
             <Text style={styles.fontCourseHeaderBold}>{this.state.data.name}</Text>

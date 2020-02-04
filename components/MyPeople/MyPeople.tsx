@@ -5,8 +5,9 @@ import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
 
 import { Image } from 'react-native'
+import { NavigationScreenProp } from 'react-navigation';
 interface Props {
-  navigation: any
+  navigation: NavigationScreenProp<any, any>
   wrap:Boolean
 }
 

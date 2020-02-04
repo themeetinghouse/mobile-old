@@ -1,12 +1,11 @@
 import {  Header, Left, Body,  Right, Button } from 'native-base';
-import { DrawerActions } from 'react-navigation';
+import { DrawerActions, NavigationScreenProp } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import {  Image, Text } from 'react-native';
 import styles from '../Header/style.js'
-
 interface Props {
-  navigation: any
+  navigation: NavigationScreenProp<any, any>,
   title:string,
   onMapChange?():any
 }
