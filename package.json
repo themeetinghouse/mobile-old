@@ -12,7 +12,7 @@
     "@types/googlemaps": "^3.38.1",
     "aws-amplify": "^1.2.4",
     "aws-amplify-react-native": "^2.2.3",
-    "aws-sdk": "^2.585.0",
+    "aws-sdk": "^2.814.0",
     "babel-preset-expo": "^7.0.0",
     "expo": "^35.0.0",
     "native-base": "^2.13.8",
